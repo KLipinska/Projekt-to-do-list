@@ -3,9 +3,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="styles/reset.css">
+        <link rel="stylesheet" href="reset.css">
         <link rel="stylesheet" type="text/css" href="main.css">
         <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <title>Projekt JS</title>
     </head>
     <body>
@@ -13,15 +14,50 @@
         <div id="addForm" class="header">
             <h2>To Do List - Plan, Execute, Be Happy</h2>
             <div class="header-todo"><input type="text" id="myInput" placeholder="Add new...">
-            <span id="addToDo" class="addBtn">Add</span></div>
+            <span id="addToDo" class="addBtn" data-action="add">Add</span></div>
         </div>
         <ul id="list">
-            <li class="todo">Hit the gym</li>
-            <li class="todo checked">Pay the bills</li>
-            <li class="todo">Meet George</li>
-            <li class="todo">Go to a dance lesson</li>
-            <li class="todo">Clean the room</li>
-            <li class="todo">Send the report</li>
+            <li id="todo-1" class="todo">
+                Hit the gym
+            <button data-id="edit-1" class="editBtn">Edit</button>
+            <button data-id="delete-1" class="deleteBtn">Delete</button>
+            </li>
+            <li id="todo-2" class="todo checked">
+                Pay the bills
+            <button data-id="edit-2" class="editBtn">Edit</button>
+            <button data-id="delete-2" class="deleteBtn">Delete</button>
+            </li>
+            <li id="todo-3" class="todo">
+                Meet George
+            <button data-id="edit-3" class="editBtn">Edit</button>
+            <button data-id="delete-3" class="deleteBtn">Delete</button>
+            </li>
+            <li id="todo-4" class="todo">
+                Go to a dance lesson
+            <button data-id="edit-4" class="editBtn">Edit</button>
+            <button data-id="delete-4" class="deleteBtn">Delete</button>
+            </li>
+            <li id="todo-5" class="todo">
+                Clean the room
+            <button data-id="edit-5" class="editBtn">Edit</button>
+            <button data-id="delete-5" class="deleteBtn">Delete</button>
+            </li>
+            <li id="todo-6" class="todo">
+                Send the report
+            <button data-id="edit-6" class="editBtn">Edit</button>
+            <button data-id="delete-6" class="deleteBtn">Delete</button>
+            </li>
         </ul>
+
+        <!-- <div id="modal" class="modal">
+            <div class="modal-content">
+                <span id="closePopup" class="close">&times;</span>
+                <div id="editForm" class="header">
+                    <input type="text" id="popupInput" placeholder="Title...">
+                    <button id="cancelChanges" class="addBtn">Cancel</button>
+                    <button id="editTodo" class="addBtn">Approve</button>
+                </div>
+            </div>
+        </div> -->
     </body>
 </html>
