@@ -34,7 +34,7 @@ ul {
     padding: 0;
 }
 
-ul li.todo {
+ul li {
     cursor: pointer;
     position: relative;
     padding: 12px 8px 12px 40px;
@@ -42,6 +42,7 @@ ul li.todo {
     background: #eee;
     font-size: 18px;
     transition: 0.2s;
+    width: 100%;
 }
 
 ul li:nth-child(odd) {
@@ -55,6 +56,11 @@ ul li:hover {
 ul li.checked {
     background: #888;
     color: #fff;
+    /* text-decoration: line-through; */
+    position: relative;
+}
+
+ul li.checked span{
     text-decoration: line-through;
 }
 
@@ -64,7 +70,7 @@ ul li.checked::before {
     border-color: #fff;
     border-style: solid;
     border-width: 0 2px 2px 0;
-    top: 10px;
+    top: 22px;
     left: 16px;
     transform: rotate(45deg);
     height: 15px;
@@ -72,10 +78,22 @@ ul li.checked::before {
 }
 
 .close {
-    color: #aaaaaa;
+    /* color: #aaaaaa;
     float: right;
     font-size: 28px;
-    font-weight: bold;
+    font-weight: bold; */
+    text-align: center;
+    text-decoration: none;
+    font-size: 30px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    margin-right: 15px;
+    top: 5px;
+    left: 20px;
+    float: right;
+    border: none;
+    background-color: white;
+    color:  #888;
 }
 
 .close:hover {
@@ -116,7 +134,7 @@ input {
     background-color: #bbb;
 }
 
-.editBtn, .deleteBtn {
+/* .editBtn, .deleteBtn {
     color: white;
     padding: 8px 16px;
     text-align: center;
@@ -137,7 +155,44 @@ input {
 .deleteBtn {
     border: 1px solid #f54336;
     background-color: #f54336;   
-}
+} */
+
+.edit, .delete, .done{
+
+    /* border: 1px solid green;
+    background-color: #4CAF50; */
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+  
+  
+  .edit{
+  
+    border: 1px solid #0f73ee;
+    background-color: #0f73ee;
+  }
+  
+  .delete{
+  
+    border: 1px solid #f54336;
+    background-color: #f54336; 
+  }
+  
+  .done{
+  
+    border: 1px solid #0f73ee;
+    background-color: white;
+    color:  #0f73ee;
+  }
+  
 
 .modal {
     display: none;
@@ -155,15 +210,120 @@ input {
 .modal-content {
     background-color: white;
     margin: auto;
-    padding: 20px;
+    /* padding: 20px; */
+    padding-top: 6px;
+    padding-bottom: 35px;
+    padding-left: 40px;
     border: 1px solid #888;
     width: 80%;
+    border-radius: 3px;
 }
 
-.modal-content input {
-    width: 100%;   
+.modal-closePopup {
+    overflow: hidden;
 }
 
-.modal-content button {
+.modal-content-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10px;
+    padding-right: 40px;   
+}
+
+.modal-content-btn-space {
+    display: flex;
+    margin-left: 20px;
+  }  
+
+  .to-right{
+    display: block;
+  }
+  
+  .to-left{
+    display: block;
     width: 50%;
-}
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .flex-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #btn__done{
+    border: 1px solid #0f73ee;
+    background-color: #0f73ee;
+    color: white;
+    padding: 8px 38px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 3px;
+    
+  }
+  
+  #btn__cancel{
+    border: 1px solid #0f73ee;
+    background-color: white;
+    color:  #0f73ee;
+    padding: 8px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+  
+  #todoInput, #popupInput {
+    margin: 0;
+    border:none;
+    width: 75%;
+    padding: 10px;
+    float: left;
+    font-size: 16px;
+    box-shadow: 0 0 0 transparent;
+    color: #4a4a4a;
+    border: 1px solid #d9d9d9
+  }
+  
+  #todoInput{
+  margin-top: 20px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  }
+  
+  #popupInput{
+    border-radius: 3px;
+    border: 1px solid #d9d9d9;
+  }
+  
+  
+  #addTodo {
+    padding: 10px 36px;
+    background:#0f73ee;
+    color:white;
+    float: left;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 0;
+    margin-top: 20px;
+    right: 10px;
+    border: none;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border: 1px solid #0f73ee;
+  } 
+  
