@@ -1,43 +1,100 @@
-let $addBtn, $myInput;
+let $approveBtn, $editInput, $modal, $list, $todoInput;
 
+const BASE_URL = "http://195.181.210.249:3000/todo/";
 
 function main() {
-    const $list = document.getElementById("list");
+    prepareDOMElements ();
+    prepareDOMEvents();
+    getToDos();
+}
+
+function prepareDOMElements () {
+    $approveBtn = document.getElementById("editToDo");
+    $todoInput = document.getElementById("todoInput");
+    $editInput = document.getElementById("popupInput");
+    $modal = document.getElementById ("modal");
+    $approveBtn.addEventListener("click", approveBtnClickHandler);
+    $list = document.getElementById("list");
+}
+
+function prepareDOMEvents () {
     $list.addEventListener("click", listClickHandler);
-    $addBtn = document.getElementById("addToDo");
-    $myInput = document.getElementById("myInput");
-    $addBtn.addEventListener("click", addBtnClickHandler);
+    const $cancelButton = document.getElementById("cancelChanges");
+    const $closeButton = document.getElementById("closePopup");
+    $cancelButton.addEventListener("click", closePopup);
+    $closeButton.addEventListener("click", closePopup);
+}
+
+async function getToDos() {
+    try {
+        const response = await axios.get(BASE_URL);
+        response.data.forEach(addElementToList)
+    } catch(err) {
+        console.log("Błąd z serwera");
+    }
+}
+
+function addElementToList(item) {
+    const newLi = document.createElement("li");
+    newLi.classList.add("todo");
+    newLi.id = "todo-" + item.id;
+    newLi.innerText = item.title;
+
+    const editBtn = document.createElement("button");
+    editBtn.dataset.id = "edit-" + item.id;
+    editBtn.style.float = "right";
+    editBtn.innerText = "Edit";
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.dataset.id = "delete-" + item.id;
+    deleteBtn.style.float = "right";
+    deleteBtn.innerText = "Delete";
+
+    newLi.appendChild(editBtn);
+    newLi.appendChild(deleteBtn);
+
+    $list.appendChild(newLi);
 }
 
 function listClickHandler(event) {
     if(event.target.tagName === "BUTTON") {
         const [action, id] = event.target.dataset.id.split("-");
-    
         if (action === "edit") {
-            $myInput.value = event.target.parentElement.firstChild.textContent.trim();
-            $addBtn.innerText = "Edit " + id;
-            $addBtn.dataset.action = "edit";
-            $addBtn.dataset.editId = id;
-        } else if (action === "delete") {
-            event.target.parentElement.remove();
+            $editInput.value = event.target.parentElement.firstChild.textContent.trim();
+            $approveBtn.dataset.editId = id;
+            openPopup();
         }
     }
 }
 
-function addBtnClickHandler(event) {
-    console.log(event.target.dataset.action)
+async function approveBtnClickHandler(event) {
+        try {
+            await axios.put(BASE_URL + event.target.dataset.editId, {title: $editInput.value});
+            $list.innerHTML = "";
+            await getToDos();
+        } catch(err) {
+            console.log(err)
+        }
 
-    if (event.target.dataset.action === "edit") {
-        const editedElement = document.getElementById ("todo-" + event.target.dataset.editId)
-        editedElement.firstChild.textContent = $myInput.value;
-        $addBtn.innerText = "Add ";
-        $addBtn.dataset.action = "add";
-        $addBtn.dataset.editId = undefined;
-        $myInput.value = "";
-        console.log(editedElement.firstChild);
-    } else {
+        $approveBtn.dataset.editId = undefined;
+        $editInput.value = "";
+        closePopup();
+}
 
-    }
+// function markeElementAsDone(id) {
+//     axios.put(BASE_URL + id, {
+//         extra: true
+//     }).then(() => {
+//         getTodos();
+//     })
+// }
+
+function openPopup () {
+    $modal.style.display = "block";
+}
+
+function closePopup () {
+    $modal.style.display = "none";
 }
 
 document.addEventListener("DOMContentLoaded", main)
