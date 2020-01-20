@@ -1,329 +1,183 @@
 body {
-    margin: 0;
-    min-width: 250px;
-    font-family: 'Shadows Into Light', cursive;
-    font-weight: bold;
-    background: #ddd;
-    color: #505050;
+  margin: 10px auto;
+  min-width: 250px;
+  max-width: 80%;
+  background-color: silver;
 }
 
-.header {
-    background-image: url('https://i.picsum.photos/id/357/3888/2592.jpg');
-    background-position: center;
-    background-size: cover;
-    color: #505050;
-    font-size: 30px;
-    text-align: center;
-    padding: 30px, 40px;
-    height: 400px;
-}
-
-.header-todo {
-    display: flex;
-    justify-content: center;
-}  
-
-.header:after {
-    content: "";
-    display: table;
-    clear: both;
+* {
+  box-sizing: border-box;
 }
 
 ul {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 ul li {
-    cursor: pointer;
-    position: relative;
-    padding: 12px 8px 12px 40px;
-    list-style-type: none;
-    background: #eee;
-    font-size: 18px;
-    transition: 0.2s;
-    width: 100%;
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  list-style-type: none;
+  background: #eee;
+  font-size: 18px;
+  font-family: 'Roboto', sans-serif;
+  transition: 0.2s;
+
+/* make the list items unselectable */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 ul li:nth-child(odd) {
-    background: #f9f9f9;
+background: #f9f9f9;
 }
 
 ul li:hover {
-    background: #ddd;
+  background: #ddd;
 }
 
 ul li.checked {
-    background: #888;
-    color: #fff;
-    /* text-decoration: line-through; */
-    position: relative;
-}
-
-ul li.checked span{
-    text-decoration: line-through;
+  background: teal;
+  color: white;
+  text-decoration: line-through;
 }
 
 ul li.checked::before {
-    content: '';
-    position: absolute;
-    border-color: #fff;
-    border-style: solid;
-    border-width: 0 2px 2px 0;
-    top: 22px;
-    left: 16px;
-    transform: rotate(45deg);
-    height: 15px;
-    width: 7px;
+  content: '';
+  position: absolute;
+  border-color: #fff;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  top: 10px;
+  left: 16px;
+  transform: rotate(45deg);
+  height: 15px;
+  width: 7px;
 }
 
 .close {
-    /* color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold; */
-    text-align: center;
-    text-decoration: none;
-    font-size: 30px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-    margin-right: 15px;
-    top: 5px;
-    left: 20px;
-    float: right;
-    border: none;
-    background-color: white;
-    color:  #888;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
 }
 
 .close:hover {
-    background-color: #f44336;
-    color: white;
+  background-color: crimson;
+  color: white;
 }
 
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
+.close:hover, .close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.header {
+  background-color: crimson;
+  padding: 30px 40px;
+  color: white;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.header:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 input {
-    margin: 0;
-    border: none;
-    border-radius: 0;
-    width: 75%;
-    padding: 10px;
-    font-size: 16px;
-    float: left;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  width: 75%;
+  padding: 10px;
+  float: left;
+  font-size: 16px;
 }
 
 .addBtn {
-    padding: 10px;
-    width: 25%;
-    background: #d9d9d9;
-    color: #555;
-    float: left;
-    text-align: center;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.3s;
-    border-radius: 0;
+  padding: 10px;
+  width: 25%;
+  background: #d9d9d9;
+  color: #555;
+  float: left;
+  text-align: center;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 0;
 }
 
 .addBtn:hover {
-    background-color: #bbb;
+  background-color: #bbb;
 }
-
-/* .editBtn, .deleteBtn {
-    color: white;
-    padding: 8px 16px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-    border-radius: 3px;
-}
-
-.editBtn {
-    border: 1px solid lightskyblue;
-    background-color: lightskyblue;
-}
-
-.deleteBtn {
-    border: 1px solid #f54336;
-    background-color: #f54336;   
-} */
-
-.edit, .delete, .done{
-
-    /* border: 1px solid green;
-    background-color: #4CAF50; */
-    color: white;
-    padding: 8px 16px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-    border-radius: 3px;
-  }
-  
-  
-  .edit{
-  
-    border: 1px solid #0f73ee;
-    background-color: #0f73ee;
-  }
-  
-  .delete{
-  
-    border: 1px solid #f54336;
-    background-color: #f54336; 
-  }
-  
-  .done{
-  
-    border: 1px solid #0f73ee;
-    background-color: white;
-    color:  #0f73ee;
-  }
-  
 
 .modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    padding-top: 100px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.4);
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left:0;
+  top:0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
 }
 
 .modal-content {
-    background-color: white;
-    margin: auto;
-    /* padding: 20px; */
-    padding-top: 6px;
-    padding-bottom: 35px;
-    padding-left: 40px;
-    border: 1px solid #888;
-    width: 80%;
-    border-radius: 3px;
+  background-color: white;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
 }
 
-.modal-closePopup {
-    overflow: hidden;
+.modal-content input {
+  width: 100%;
 }
 
-.modal-content-btn {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    margin-top: 10px;
-    padding-right: 40px;   
+.modal-content button {
+  width: 50%;
 }
 
-.modal-content-btn-space {
-    display: flex;
-    margin-left: 20px;
-  }  
+#editTodo {
+  border: 1px solid #0f73ee;
+  background-color: #0f73ee;
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 3px;
+}
 
-  .to-right{
-    display: block;
-  }
-  
-  .to-left{
-    display: block;
-    width: 50%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
-  .flex-row{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
+#clear-list {
+  width: 30%;
+  font-weight: bold;
+  font-size: 30px;
+  font-family: 'Roboto', sans-serif;
+  margin: 40px 35%;
+  background-color: darkblue;
+  color: white;
+}
 
-  #btn__done{
-    border: 1px solid #0f73ee;
-    background-color: #0f73ee;
-    color: white;
-    padding: 8px 38px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-    border-radius: 3px;
-    
-  }
-  
-  #btn__cancel{
-    border: 1px solid #0f73ee;
-    background-color: white;
-    color:  #0f73ee;
-    padding: 8px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-    border-radius: 3px;
-  }
-  
-  #todoInput, #popupInput {
-    margin: 0;
-    border:none;
-    width: 75%;
-    padding: 10px;
-    float: left;
-    font-size: 16px;
-    box-shadow: 0 0 0 transparent;
-    color: #4a4a4a;
-    border: 1px solid #d9d9d9
-  }
-  
-  #todoInput{
-  margin-top: 20px;
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
-  }
-  
-  #popupInput{
-    border-radius: 3px;
-    border: 1px solid #d9d9d9;
-  }
-  
-  
-  #addTodo {
-    padding: 10px 36px;
-    background:#0f73ee;
-    color:white;
-    float: left;
-    text-align: center;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.3s;
-    border-radius: 0;
-    margin-top: 20px;
-    right: 10px;
-    border: none;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
-    border: 1px solid #0f73ee;
-  } 
-  
+#clear-list:hover {
+  background-color: blue;
+  color: white;
+}

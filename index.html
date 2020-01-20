@@ -5,55 +5,34 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="reset.css">
         <link rel="stylesheet" type="text/css" href="main.css">
-        <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <title>Projekt JS</title>
     </head>
     <body>
         <script src="script.js"></script>
+
+        <div id="addForm" class="header">
+            <h2 style="margin:5px">To Do List</h2>
+            <input type="text" id="myInput" placeholder="Title...">
+            <span onclick="newElement()" class="addBtn" data-action="add">Add</span>
+        </div>
         
-    <div id="date" class="date"></div>
-        <form id="addForm" class="header">
-            <h2>Your To Do List - Plan, Execute, Be Happy</h2>
-            <div class = header-todo><input type="text" id="todoInput" placeholder="Add new...">
-            <button id="addTodo" class="addBtn">Add</button></div>
-    </form>
-
-        
-        <!-- <div id="addForm" class="header">
-            <h2>To Do List - Plan, Execute, Be Happy</h2>
-            <div class="header-todo"><input type="text" id="myInput" placeholder="Add new...">
-            <span id="addToDo" class="addBtn" data-action="add">Add</span></div>
-        </div> -->
-
-
-        <ul id="list">
+        <ul id="myUL">
         </ul>
 
         <div id="modal" class="modal">
             <div class="modal-content">
-                <div class="modal-closePopup">
-                    <button id="closePopup" class="close">&times;</button>
-                </div>
-
-                <div class="modal-content-btn">
-                        <input type="text" id="popupInput" placeholder="Title...">
-                        <div class="modal-content-btn-space">
-                        <button id="btn__cancel" class="addBtn close">CANCEL</button>
-                        <button id="btn__done" class="addBtn">OK</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-              
-            
-                <!-- <span id="closePopup" class="close">&times;</span>
+                <span id="closePopup" class="close">&times;</span>
                 <div id="editForm" class="header">
                     <input type="text" id="popupInput" placeholder="Title...">
                     <button id="cancelChanges" class="addBtn">Cancel</button>
-                    <button id="editToDo" class="addBtn">Approve</button> -->
-                <!-- </div>
+                    <button id="editTodo" class="addBtn">Approve</button>
+                </div>
             </div>
-        </div> -->
+        </div>
+
+        <button type="button" id="clear-list" onclick="removeAll()">Clear Items</button>
+
     </body>
 </html>
