@@ -33,14 +33,16 @@ function newElement() {
   if (inputValue === '') {
   alert("You must write something!");
   } else {
-    document.getElementById("myUL").appendChild(li);
+    document.getElementById("list").appendChild(li);
   }
   document.getElementById("myInput").value = "";
+  
   var span = document.createElement("SPAN");
   var txt = document.createTextNode("\u00D7");
   span.className = "close";
   span.appendChild(txt);
   li.appendChild(span);
+  
   for (i = 0; i < close.length; i++) {
     close[i].onclick = function() {
         var div = this.parentElement;
@@ -49,30 +51,29 @@ function newElement() {
   }
 }
 
-function addElementToList(item) {
-  // const newLi = document.createElement("li");
-  // newLi.classList.add("todo");
-  // newLi.id = "todo-" + item.id;
-  // newLi.innerText = item.title;
+// function addElementToList(item) {
+//   const newLi = document.createElement("li");
+//   newLi.classList.add("todo");
+//   newLi.id = "todo-" + item.id;
+//   newLi.innerText = item.title;
 
-  const editBtn = document.createElement("button");
-  editBtn.dataset.id= "edit-" + item.id;
-  editBtn.style.float= "right";
-  editBtn.innerText = "Edit";
+//   const editBtn = document.createElement("button");
+//   editBtn.dataset.id= "edit-" + item.id;
+//   editBtn.style.float= "right";
+//   editBtn.innerText = "Edit";
 
-  newLi.appendChild(editBtn);
+//   newLi.appendChild(editBtn);
+//   $list.appendChild(newLi);
+// }
 
-  $list.appendChild(newLi);
-}
-
-async function getToDos() {
-  try {
-      const response = await axios.get(BASE_URL);
-      response.data.forEach(addElementToList)
-  } catch(err) {
-      console.log("Błąd z serwera");
-  }
-}
+// async function getToDos() {
+//   try {
+//       const response = await axios.get(BASE_URL);
+//       response.data.forEach(addElementToList)
+//   } catch(err) {
+//       console.log("Błąd z serwera");
+//   }
+// }
 
 // Create a "close" button and append it to each list item
 var myNodelist = document.getElementsByTagName("LI");
@@ -96,7 +97,7 @@ for (i = 0; i < close.length; i++) {
 }
 
 // Add a "checked" symbol when clicking on a list item
-var list = document.querySelector('ul');
+var list = document.querySelector("ul");
 list.addEventListener('click', function(ev) {
   if (ev.target.tagName === 'LI') {
   ev.target.classList.toggle('checked');
